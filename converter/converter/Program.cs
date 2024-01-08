@@ -10,11 +10,12 @@ namespace converter
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 100; i++)
-            {
-                Console.WriteLine(i);
-            }
+            Console.WriteLine("Please enter The Number");
+            int num = 0;
+            int.TryParse(Console.ReadLine(), out num);
+            Console.WriteLine(num + 2);
             Console.ReadLine();
+
         }
     }
 }
