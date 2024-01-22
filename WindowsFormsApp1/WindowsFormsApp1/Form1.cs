@@ -20,15 +20,15 @@ namespace WindowsFormsApp1
         }
         struct Pokemon
         {
-            string Name;
-            string Type;
-            int Level;
-            attack attackType;
-            int Hp;
-            int ExP;
-            bool Legendary;
-            bool Shiny;
-            int Generation;
+            public string Name;
+            public string Type;
+            public int Level;
+            public attack attackType;
+            public int Hp;
+            public int ExP;
+            public bool Legendary;
+            public bool Shiny;
+            public int Generation;
         }
         public Form1()
         {
@@ -44,6 +44,36 @@ namespace WindowsFormsApp1
                 infile.Close();
             }
         }
+
+        private void ReadPokemon(string s)
+        {
+            Pokemon p = new Pokemon();
+            string[] fields = s.Split('|');
+            p.Name = fields[0];
+            p.Type = fields[1];
+            p.Level = int.Parse(fields[2]);
+            p.attackType = (attack)Enum.Parse(typeof(attack), fields[3]);
+            p.Hp = int.Parse(fields[4]);
+            p.ExP = int.Parse(fields[5]);
+            if (LegcheckBox.Checked = true)
+            {
+                p.Legendary = fields[6].ToString() == "true";
+            }
+            else
+            {
+                p.Legendary = fields[6].ToString() == "false";
+            }
+            if (ShinycheckBox.Checked = true)
+            {
+                p.Shiny = fields[7].ToString() == "true";
+            }
+            else
+            {
+                p.Shiny = fields[7].ToString() == "false";
+            }
+            p.Generation = int.Parse(fields[8]);
+        }
+
 
         private void HptextBox_TextChanged(object sender, EventArgs e)
         {
